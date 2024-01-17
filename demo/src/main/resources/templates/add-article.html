@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Ajouter un auteur</title>
+</head>
+<body>
+<h2>Ajouter un article</h2>
+<form th:action="@{/addArticle}" th:object="${article}" method="post">
+    <label>Titre : <input type="text" th:field="*{title}" /></label><br/>
+    <label>Contenu : <input type="text" th:field="*{content}" /></label><br/>
+    <label>Auteur :
+        <select th:field="*{author}">
+            <option th:each="author : ${authors}" th:value="${author.id}" th:text="${author.firstName + ' ' + author.lastName}"></option>
+        </select>
+    </label><br/>
+
+    <input type="submit" value="Ajouter"/>
+</form>
+</body>
+</html>

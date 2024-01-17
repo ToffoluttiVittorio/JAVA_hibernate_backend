@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Éditer un article</title>
+</head>
+<body>
+<h2>Éditer un article</h2>
+<form th:action="@{'/editArticle/' + ${article.id}}" th:object="${article}" method="post">
+
+  <label>Titre : <input type="text" th:field="*{title}" /></label><br/>
+  <label>Contenu : <textarea th:field="*{content}"></textarea></label><br/>
+  <label>Auteur :
+    <select th:field="*{author}">
+      <option th:each="author : ${authors}" th:value="${author}" th:text="${author.firstName + ' ' + author.lastName}"></option>
+    </select>
+  </label><br/>
+  <input type="submit" value="Enregistrer"/>
+</form>
+</body>
+</html>
