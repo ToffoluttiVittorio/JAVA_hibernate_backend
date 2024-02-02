@@ -31,7 +31,13 @@ public class ParticipantController {
 
     @GetMapping("/addevent")
     public String showAddAuthorForm(Model model) {
-        model.addAttribute("event", new Event());
-        return "addevent";
+            model.addAttribute("event", new Event());
+            return "addevent";
+    }
+
+    @PostMapping("/addevent")
+    public String addAuthor(@ModelAttribute Event event) {
+        eventService.save(event);
+        return "redirect:/myevents";
     }
 }

@@ -18,16 +18,16 @@ public class EventService {
         return (List<Event>) repository.findAll();
     }
 
-    public void save(Event article) {
-        repository.save(article);
+    public void save(Event event) {
+        repository.save(event);
     }
 
     public Optional<Event> findById(Long id) {
         return repository.findById(id);
     }
 
-    public void delete(Event article) {
-        repository.delete(article);
+    public void delete(Event event) {
+        repository.delete(event);
     }
 }
 

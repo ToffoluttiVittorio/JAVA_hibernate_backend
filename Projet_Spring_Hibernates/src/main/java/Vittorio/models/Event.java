@@ -82,8 +82,8 @@ public class Event {
         this.duree = duree;
     }
 
-    public String getNb_participant_max(int nb_participant_max) {
-        return theme;
+    public int getNb_participant_max() {
+        return nb_participant_max;
     }
 
     public void setNb_participant_max(int nb_participant_max) {
