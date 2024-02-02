@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Liste des évenements</title>
+</head>
+<body>
+<h1>Liste des évenements</h1>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Titre</th>
+        <th>Contenu</th>
+        <th>Auteur</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="events : ${events}">
+        <td th:text="${events.id}"></td>
+        <td th:text="${events.titre}"></td>
+
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
