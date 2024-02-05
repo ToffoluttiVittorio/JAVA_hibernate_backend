@@ -18,15 +18,22 @@ public class ParticipantService {
         return (List<Participant>) repository.findAll();
     }
 
-    public void save(Participant article) {
-        repository.save(article);
+    public void save(Participant participant) {
+        repository.save(participant);
     }
 
     public Optional<Participant> findById(Long id) {
         return repository.findById(id);
     }
 
-    public void delete(Participant article) {
-        repository.delete(article);
+    public void deleteById(Long id) {
+        repository.deleteById(id);
     }
+
+    public void delete(Participant participant) {
+        repository.delete(participant);
+    }
+
+
 }
+

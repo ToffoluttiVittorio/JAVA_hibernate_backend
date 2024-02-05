@@ -10,6 +10,7 @@ import Vittorio.services.EventService;
 import Vittorio.services.ParticipantService;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class ParticipantController {
@@ -40,4 +41,50 @@ public class ParticipantController {
         eventService.save(event);
         return "redirect:/myevents";
     }
+<<<<<<< HEAD
+
+    @GetMapping("/addparticipant")
+    public String showAddParticipantForm(Model model) {
+        List<Event> events = eventService.findAll();
+        model.addAttribute("events", events);
+        model.addAttribute("participant", new Participant());
+        return "addParticipant";
+    }
+
+    @PostMapping("/addparticipant")
+    public String addParticipant(@ModelAttribute Participant participant) {
+        participantService.save(participant);
+        return "redirect:/myevents";
+    }
+
+    @PostMapping("/participants/delete/{id}")
+    public String deleteParticipant(@PathVariable Long id) {
+        participantService.deleteById(id);
+        return "redirect:/myevents";
+    }
+
+    @GetMapping("/editparticipant/{id}")
+    public String showEditForm(@PathVariable Long id, Model model) {
+        Optional<Participant> participant = participantService.findById(id);
+        if (participant.isPresent()) {
+            model.addAttribute("participant", participant.get());
+            return "editparticipant";
+        } else {
+            // Gérez l'erreur, par exemple en redirigeant vers une page d'erreur
+            return "redirect:/myevents";
+        }
+    }
+
+    @PostMapping("/editparticipant")
+    public String updateParticipant(@ModelAttribute Participant updatedParticipant) {
+
+        return "redirect:/myevents";
+    }
+
+
 }
+
+
+=======
+}
+>>>>>>> origin/main
