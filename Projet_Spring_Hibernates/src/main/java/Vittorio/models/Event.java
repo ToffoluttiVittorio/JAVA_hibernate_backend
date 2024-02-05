@@ -29,7 +29,7 @@ public class Event {
 
     }
 
-    public Event(String title, String theme, Date date_debut, int duree, int nb_participant_max,
+    public Event(String titre, String theme, Date date_debut, int duree, int nb_participant_max,
                  String description, String organisateur, String type_event) {
         this.titre = titre;
         this.theme = theme;
