@@ -1,0 +1,81 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Liste des événements</title>
+</head>
+<body>
+<h1>Liste des évenements</h1>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Titre</th>
+        <th>Theme</th>
+        <th>Date de début</th>
+        <th>Durée (en jour)</th>
+        <th>Nombre max de participants</th>
+        <th>Description</th>
+        <th>Organisateur</th>
+        <th>Type d'événement</th>
+        <th>Participants</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="event : ${events}">
+        <td th:text="${event.id}"></td>
+        <td th:text="${event.titre}"></td>
+        <td th:text="${event.theme}"></td>
+        <td th:text="${event.date_debut}"></td>
+        <td th:text="${event.duree}"></td>
+        <td th:text="${event.nb_participant_max}"></td>
+        <td th:text="${event.description}"></td>
+        <td th:text="${event.organisateur}"></td>
+        <td th:text="${event.type_event}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<p>Ajouter un événement <a
+        href="/addevent">ici</a></p>
+
+<h2>Liste des Participants</h2>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Email</th>
+            <th>Date de Naissance</th>
+            <th>Organisation</th>
+            <th>Observation</th>
+            <th>Event</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="participant : ${participants}">
+            <td th:text="${participant.id}"></td>
+            <td th:text="${participant.nom}"></td>
+            <td th:text="${participant.prenom}"></td>
+            <td th:text="${participant.email}"></td>
+            <td th:text="${participant.date_naiss}"></td>
+            <td th:text="${participant.organisation}"></td>
+            <td th:text="${participant.observation}"></td>
+            <td th:text="${participant.event.titre}"></td>
+            <td>
+                <a th:href="@{/editparticipant/{id}(id=${participant.id})}">Éditer </a>
+                <form th:action="@{'/participants/delete/' + ${participant.id}}" method="post">
+                    <input type="hidden" name="_method" value="delete" />
+                    <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce participant ?')">Supprimer</button>
+                </form>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<p>Ajouter un participant <a
+        href="/addparticipant">ici</a></p>
+
+
+</body>
+</html>
