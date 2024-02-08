@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Ajouter un Participant</title>
+</head>
+<body>
+
+<!-- Afficher le message d'erreur s'il y en a un -->
+<div th:if="${errorMessage}" class="error-message" th:text="${errorMessage}"></div>
+
+
+<h2>Ajouter un Participant</h2>
+<form th:action="@{/addparticipant}" th:object="${participant}" method="post">
+    <label>Nom : <input type="text" th:field="*{nom}" /></label><br/>
+    <label>Prenom : <input type="text" th:field="*{prenom}" /></label><br/>
+    <label>Email : <input type="text" th:field="*{email}" /></label><br/>
+    <label>Date de Naissance : <input type="text" th:field="*{date_naiss}" /></label><br/>
+    <label>Organisation : <input type="text" th:field="*{organisation}" /></label><br/>
+    <label>Observation : <input type="text" th:field="*{observation}" /></label><br/>
+    <label>Event :
+        <select th:field="*{event.id}">
+            <option th:each="event : ${events}" th:value="${event.id}" th:text="${event.titre}"></option>
+        </select>
+    </label><br/>
+
+    <input type="submit" value="Ajouter le participant"/>
+</form>
+</body>
+</html>
