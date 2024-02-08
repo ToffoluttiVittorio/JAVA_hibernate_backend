@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Édition du Participant</title>
+</head>
+<body>
+<h2>Édition du Participant</h2>
+
+<form action="/editparticipant" method="post" th:object="${participant}">
+    <input type="hidden" th:field="*{id}" />
+
+    <label>Nom: <input type="text" th:field="*{nom}" /></label><br/>
+    <label>Prénom: <input type="text" th:field="*{prenom}" /></label><br/>
+    <label>Email: <input type="text" th:field="*{email}" /></label><br/>
+    <label>Date de Naissance: <input type="text" th:field="*{date_naiss}" /></label><br/>
+    <label>Organisation: <input type="text" th:field="*{organisation}" /></label><br/>
+    <label>Observation: <input type="text" th:field="*{observation}" /></label><br/>
+    <!-- Champ de texte non modifiable pour afficher le titre de l'événement -->
+    <label>Événement:
+        <input type="text" th:field="*{event.titre}" readonly="readonly" />
+    </label><br/>
+
+    <input type="submit" value="Enregistrer les modifications"/>
+</form>
+</body>
+</html>

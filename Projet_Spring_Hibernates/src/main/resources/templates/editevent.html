@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Édition de l'Événement</title>
+</head>
+<body>
+<h2>Édition de l'Événement</h2>
+
+<form action="/editevent" method="post" th:object="${event}">
+    <input type="hidden" th:field="*{id}" />
+
+    <label>Titre: <input type="text" th:field="*{titre}" /></label><br/>
+    <label>Thème: <input type="text" th:field="*{theme}" /></label><br/>
+    <label>Date de Début: <input type="text" th:field="*{date_debut}" /></label><br/>
+    <label>Durée: <input type="text" th:field="*{duree}" /></label><br/>
+    <label>Nombre de Participants Max: <input type="text" th:field="*{nb_participant_max}" /></label><br/>
+    <label>Description: <input type="text" th:field="*{description}" /></label><br/>
+    <label>Organisateur: <input type="text" th:field="*{organisateur}" /></label><br/>
+    <label>Type d'Événement: <input type="text" th:field="*{type_event}" /></label><br/>
+    <!-- Boucle pour les participants -->
+    <label for="participants">Participants:</label>
+    <select multiple="multiple" th:field="*{participants}" id="participants">
+        <option th:each="participant : ${event.participants}"
+                th:value="${participant.id}" th:text="${participant.nom + ' ' + participant.prenom}">
+        </option>
+    </select><br/>
+
+
+    <input type="submit" value="Enregistrer les modifications"/>
+</form>
+</body>
+</html>
